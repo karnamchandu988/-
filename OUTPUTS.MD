@@ -1,16 +1,18 @@
 # 📸 Output Gallery — OpenPiton TILE · Synthesis to GDSII
 
-Screenshots captured from a cloud-based EDA environment (DC + ICC2). Hosted via GitHub comment-image upload — drag each image into any issue comment box, copy the URL it generates, and paste it into the placeholders below. Close the issue (do not delete it) to keep images live.
+Screenshots captured from a cloud-based EDA environment using **Synopsys Design Compiler (DC)** and **Synopsys IC Compiler II (ICC2)**.
 
 ---
 
 ## 1 · Synthesis — Netlist Schematic
 
-**Stage:** Synthesis · **Tool:** Design Vision (TopLevel.2 — tile)
+**Stage:** Synthesis · **Tool:** Design Vision (`TopLevel.2 — tile`)
 
-The gate-level netlist of the TILE block after `compile_ultra` in Design Compiler. The dense blue interconnect pattern confirms a fully synthesised, linked netlist — the starting point handed off to ICC2 for physical implementation.
+The gate-level netlist of the TILE block after `compile_ultra` in Design Compiler. The dense blue interconnect pattern confirms a fully synthesised and linked netlist, providing the starting point for physical implementation in ICC2.
 
-![Synthesis Netlist Schematic](PASTE_URL_HERE)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/02c10b29-e126-46f0-a5ad-93b002788e47" alt="Synthesis Netlist Schematic" width="900">
+</p>
 
 ---
 
@@ -18,9 +20,11 @@ The gate-level netlist of the TILE block after `compile_ultra` in Design Compile
 
 **Stage:** Floorplan · **Tool:** IC Compiler II
 
-All 18 SRAM macros placed and fixed at the block boundaries — L1 icache, L1 dcache, L2 data/tag/state arrays, and the directory array. The large open central region is the standard-cell placement area that will be filled in subsequent stages.
+All **18 SRAM macros** placed and fixed at the block boundaries, including L1 I-cache, L1 D-cache, L2 data/tag/state arrays, and the directory array. The large open central region provides the standard-cell placement area for subsequent implementation stages.
 
-![Floorplan Macro Placement](PASTE_URL_HERE)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ec1100e5-35af-4f84-bf42-0ca81d3695c5" alt="Floorplan Macro Placement" width="900">
+</p>
 
 ---
 
@@ -28,29 +32,35 @@ All 18 SRAM macros placed and fixed at the block boundaries — L1 icache, L1 dc
 
 **Stage:** Floorplan / Post-Route · **Tool:** ICC2 `report_utilization -config core_util`
 
-Custom utilization configuration (`core_util`) reporting against the full core area — includes macros in both numerator and denominator — giving the design-intent utilization of **70%** (0.7000), matching the original floorplan specification.
+A custom utilization configuration (`core_util`) was used to report utilization against the full core area, including macros in both the numerator and denominator. The resulting **70% utilization (0.7000)** matches the original floorplan specification.
 
-![Core Utilization 70% Report](PASTE_URL_HERE)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/63babede-cd07-4b1d-b56d-2f0ad33e51bd" alt="Core Utilization 70 Percent Report" width="900">
+</p>
 
 ---
 
 ## 4 · Placement — Cell Density Heatmap
 
-**Stage:** Placement · **Tool:** ICC2 Map Mode: Cell Density
+**Stage:** Placement · **Tool:** ICC2 · **Map Mode:** Cell Density
 
-Cell density map after `place_opt`. The predominantly green distribution (60–70%) with isolated yellow spots confirms the 60% partial blockages around macro channels successfully spread placement evenly. No red (>100%) hotspots were present.
+Cell density map after `place_opt`. The predominantly green distribution, representing approximately **60–70% density**, with isolated yellow regions indicates that the **60% partial blockages** around macro channels successfully helped distribute standard cells evenly. No red regions exceeding 100% density were observed.
 
-![Cell Density Heatmap](PASTE_URL_HERE)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/eb56fed0-7179-458b-8b01-86e6b7a81d89" alt="Cell Density Heatmap" width="900">
+</p>
 
 ---
 
 ## 5 · Placement — Congestion Map
 
-**Stage:** Placement · **Tool:** ICC2 Map Mode: Global Route Congestion (Hard)
+**Stage:** Placement · **Tool:** ICC2 · **Map Mode:** Global Route Congestion (Hard)
 
-Routing demand vs. supply across the design after placement. Result: **0.11% horizontal, 1.18% vertical congestion** — within acceptable limits to proceed to CTS without additional intervention. Sparse purple areas indicate isolated overflow, not systemic congestion.
+Routing demand versus available routing supply across the design after placement. The reported congestion was **0.11% horizontal** and **1.18% vertical**, remaining within acceptable limits for proceeding to CTS without additional congestion intervention. The sparse purple regions represent isolated overflow rather than systemic congestion.
 
-![Congestion Map](PASTE_URL_HERE)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c2a50a4d-8270-4cef-93c3-baa1ba8e305f" alt="Global Route Congestion Map" width="900">
+</p>
 
 ---
 
@@ -58,53 +68,81 @@ Routing demand vs. supply across the design after placement. Result: **0.11% hor
 
 **Stage:** Placement / Post-Route · **Tool:** IC Compiler II
 
-1,360 spare cells distributed across the design at a 70×70 µm repetitive window. These were re-inserted with `dont_touch` applied before `place_opt` to prevent the tool from removing them as unloaded logic (Issue #2 in the implementation document).
+A total of **1,360 spare cells** were distributed across the design using a **70 × 70 µm repetitive window**. The spare cells were re-inserted with `dont_touch` applied before `place_opt` to prevent the optimizer from removing them as unloaded logic.
 
-![Spare Cell Distribution](PASTE_URL_HERE)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c08a3ade-6347-4679-b3ff-23817143904d" alt="Spare Cell Distribution" width="900">
+</p>
 
 ---
 
 ## 7 · Chip Finish — Standard Cell and Filler Layout
 
-**Stage:** Chip Finish · **Tool:** IC Compiler II (tile.ndm:chipfinish.design)
+**Stage:** Chip Finish · **Tool:** IC Compiler II (`tile.ndm:chipfinish.design`)
 
-The final chip-finish view showing the packed standard-cell core — flip-flops (`DFND2BWP40P140HVT`), decap cells (`DCAP8B`), and filler cells filling all gaps. IO buffer padding was removed before filler insertion to allow fillers to close the gaps between IO cells.
+The final chip-finish view showing the packed standard-cell core, including flip-flops (`DFND2BWP40P140HVT`), decap cells (`DCAP8B`), and filler cells closing the remaining gaps.
 
-![Chip Finish Filler Layout](PASTE_URL_HERE)
+IO buffer padding was removed before filler insertion so that filler cells could be inserted between the IO cells where required.
 
----
-
-## 8 · Post-Route — Layout View
-
-**Stage:** Post-Route · **Tool:** IC Compiler II
-
-Full post-route layout showing the routed standard-cell region with macro columns at the boundaries. All 38 DRC violations and 6 shorts from the initial routing were cleared to zero through `route_opt` reruns and targeted manual fixes.
-
-![Post-Route Layout](PASTE_URL_HERE)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/41a873bc-16a1-4154-87b0-7875af85edd7" alt="Chip Finish Standard Cell and Filler Layout" width="900">
+</p>
 
 ---
 
-## 9 · Chip Finish — Utilization Report (100% Site-Row)
+## 8 · Chip Finish — Utilization Report (100% Site-Row)
 
 **Stage:** Chip Finish · **Tool:** ICC2 `report_utilization`
 
-`report_utilization` at chip finish excludes hard macros and keepouts from both numerator and denominator — measuring only standard-cell site rows. The **1.0000 ratio confirms all available rows are fully packed** after filler insertion.
+At chip finish, `report_utilization` excludes hard macros and keepouts from both the numerator and denominator, measuring utilization across the available standard-cell site rows.
 
-![Chip Finish Utilization Report](PASTE_URL_HERE)
+The reported **1.0000 ratio (100%)** confirms that the available site rows are fully occupied after filler insertion.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/45bd8a8d-45f0-43fc-8ee6-cb0f4fe4bf3c" alt="Chip Finish 100 Percent Site Row Utilization Report" width="900">
+</p>
 
 ---
 
-## 10 · Signoff — Global Timing Report (Clean)
+## 9 · Signoff — Global Timing Report (Clean)
 
-**Stage:** Post-Route Final Signoff · **Tool:** ICC2 `report_global_timing` · Date: Fri Jul 10 2026
+**Stage:** Post-Route Final Signoff · **Tool:** ICC2 `report_global_timing` · **Date:** Fri Jul 10 2026
 
-The cleanest output in any PD flow:
+The final global timing report shows a clean timing signoff:
 
-```
+```text
 No setup violations found.
 No hold violations found.
 ```
 
-Achieved after enabling CPPR (hold violations 104 → 9 → 0), custom VT-swap TCL script for setup closure, and I/O delay constraint relaxation.
+Timing closure was achieved after enabling **CPPR**, reducing hold violations from **104 → 9 → 0**, along with setup optimization using a custom VT-swap TCL script and I/O delay constraint adjustments.
 
-![Final Timing Signoff — No Violations](PASTE_URL_HERE)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/943084be-e046-455f-85be-b01ca800997f" alt="Final Timing Signoff - No Violations" width="900">
+</p>
+
+---
+
+## ✅ Final Signoff Status
+
+| Check         |                     Result |
+| ------------- | -------------------------: |
+| Synthesis     |                 ✅ Complete |
+| Floorplan     |                 ✅ Complete |
+| Placement     |                 ✅ Complete |
+| Congestion    | ✅ Within acceptable limits |
+| CTS           |                 ✅ Complete |
+| Routing       |                 ✅ Complete |
+| Chip Finish   |                 ✅ Complete |
+| Setup Timing  |            ✅ No violations |
+| Hold Timing   |            ✅ No violations |
+| Final Signoff |                    ✅ Clean |
+
+---
+
+### 🏁 OpenPiton TILE — RTL to GDSII
+
+**Technology:** 28 nm
+**Implementation:** Synopsys Design Compiler + IC Compiler II
+**Final Timing:** Setup clean · Hold clean
+**Final Utilization:** 70% core design intent / 100% site-row occupancy after chip finish
