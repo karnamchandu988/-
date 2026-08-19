@@ -114,7 +114,7 @@ tile-openpiton-physical-design/
 ## 👤 Credits
 
 **Karnam Chandra Shekar**
-Final project · Physical Design Course · Tsumeda Institute
+Final project · Physical Design Course · Sumeda IT
 📧 karnamchandu988@gmail.com · [LinkedIn](#) · [GitHub](#)
 
 ---
