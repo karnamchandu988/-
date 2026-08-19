@@ -17,7 +17,7 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0585ce7c-da98-4aee-abce-b18c71a47f49" alt="TILE — Final Layout" width="50%"/>
   <br/>
-  <sub>Final chip-finish layout · Full stage-by-stage gallery → <a href="OUTPUTS.md">outputs.md</a></sub>
+  <sub>Final chip-finish layout · Full stage-by-stage gallery → <a href="OUTPUTS.md">OUTPUTS.md</a></sub>
 </p>
 
 ---
