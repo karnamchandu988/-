@@ -114,7 +114,8 @@ tile-openpiton-physical-design/
 
 **Karnam Chandra Shekar**
 Final project · Physical Design Course · Sumeda IT
-📧 karnamchandu988@gmail.com · [LinkedIn](#) · [GitHub](#)
+📧 [karnamchandu988@gmail.com](mailto:karnamchandu988@gmail.com) · [LinkedIn](https://www.linkedin.com/in/karnamchandu988/) · [GitHub](https://github.com/karnamchandu988)
+
 
 ---
 
