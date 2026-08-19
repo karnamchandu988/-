@@ -15,7 +15,7 @@
 
 <!-- Replace with your GitHub-hosted screenshot — see outputs.md for hosting instructions -->
 <p align="center">
-  <img src="PASTE_HERO_IMAGE_URL_HERE" alt="TILE — Final Layout" width="85%"/>
+  <img src="https://github.com/user-attachments/assets/0585ce7c-da98-4aee-abce-b18c71a47f49" alt="TILE — Final Layout" width="85%"/>
   <br/>
   <sub>Final chip-finish layout · Full stage-by-stage gallery → <a href="outputs.md">outputs.md</a></sub>
 </p>
