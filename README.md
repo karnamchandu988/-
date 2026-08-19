@@ -13,11 +13,11 @@
 
 ---
 
-<!-- Replace with your GitHub-hosted screenshot — see outputs.md for hosting instructions -->
+<!-- Replace with your GitHub-hosted screenshot — see OUTPUTS.md for hosting instructions -->
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0585ce7c-da98-4aee-abce-b18c71a47f49" alt="TILE — Final Layout" width="50%"/>
   <br/>
-  <sub>Final chip-finish layout · Full stage-by-stage gallery → <a href="outputs.md">outputs.md</a></sub>
+  <sub>Final chip-finish layout · Full stage-by-stage gallery → <a href="OUTPUTS.md">outputs.md</a></sub>
 </p>
 
 ---
@@ -106,7 +106,6 @@ tile-openpiton-physical-design/
 ├── README.md
 ├── outputs.md                     ← Screenshot gallery (stage-by-stage)
 ├── TILE_PD_Implementation.pdf     ← Full implementation document
-└── LICENSE
 ```
 
 ---
